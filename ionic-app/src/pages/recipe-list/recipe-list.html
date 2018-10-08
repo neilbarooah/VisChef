@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search Results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!--<ion-card *ngFor="let recipe of recipes">
+        <ion-card-header>
+            {{ recipe.title }}
+        </ion-card-header>
+        <ion-card-content>
+          <img [src]="recipe.image">
+          <ion-row>
+              <ion-col text-right>
+                  <button ion-button clear color="orange" (click)="selectRecipe(recipe)">See Details</button>
+              </ion-col>
+          </ion-row>
+        </ion-card-content>
+
+    </ion-card>-->
+    <ion-list>
+        <button ion-item *ngFor="let recipe of recipes" text-wrap (click)="selectRecipe(recipe)">
+            <ion-thumbnail item-start>
+                <img [src]="recipe.image">
+            </ion-thumbnail>
+            <h3>{{ recipe.title }}</h3>
+        </button>
+    </ion-list>
+</ion-content>

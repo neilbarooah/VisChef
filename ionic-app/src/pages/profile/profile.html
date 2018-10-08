@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>My Diet Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <img [src]="imageString" style="height: 75px; width: auto;">
+            </ion-col>
+            <ion-col col-9 text-center>
+                <br>
+                <h2>{{ profile['name'] }}</h2>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <h3 text-center>Specify your profile here</h3>
+    <ion-list>
+      <ion-item>
+          <ion-label>Diet</ion-label>
+          <ion-select [(ngModel)]="currentProfile['diet']">
+              <ion-option *ngFor="let diet of diets" [value]="diet">
+                  {{ diet }}
+              </ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Intolerances</ion-label>
+          <ion-select [(ngModel)]="currentProfile['intolerances']" multiple="true">
+              <ion-option *ngFor="let intolerance of intolerances" [value]="intolerance">
+                  {{ intolerance }}
+              </ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label text-center>
+            Protein Range (g)<br>
+            <ion-badge item-start>{{ currentProfile['protein_range']['lower'] }}</ion-badge>
+            <ion-badge item-end>{{ currentProfile['protein_range']['upper'] }}</ion-badge>
+          </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="currentProfile['protein_range']" min="0" max="50" step="1">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>50</ion-label>
+          </ion-range>
+      </ion-item>
+      <ion-item>
+          <ion-label text-center>
+            Carb Range (g)<br>
+            <ion-badge item-start>{{ currentProfile['carb_range']['lower'] }}</ion-badge>
+            <ion-badge item-end>{{ currentProfile['carb_range']['upper'] }}</ion-badge>
+          </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="currentProfile['carb_range']" min="0" max="150" step="1">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>150</ion-label>
+          </ion-range>
+      </ion-item>
+      <ion-item>
+          <ion-label text-center>
+            Fat Range (g)<br>
+            <ion-badge item-start>{{ currentProfile['fat_range']['lower'] }}</ion-badge>
+            <ion-badge item-end>{{ currentProfile['fat_range']['upper'] }}</ion-badge>
+          </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="currentProfile['fat_range']" min="0" max="50" step="1">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>50</ion-label>
+          </ion-range>
+      </ion-item>
+      <ion-item>
+          <ion-label text-center>
+            Calorie Range<br>
+            <ion-badge item-start>{{ currentProfile['calorie_range']['lower'] }}</ion-badge>
+            <ion-badge item-end>{{ currentProfile['calorie_range']['upper'] }}</ion-badge>
+          </ion-label>
+          <ion-range dualKnobs="true" [(ngModel)]="currentProfile['calorie_range']" min="0" max="1500" step="10">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>1500</ion-label>
+          </ion-range>
+      </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <button block round ion-button color="secondary" (click)="saveProfile()">Save Profile</button>
+</ion-footer>

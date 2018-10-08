@@ -1,0 +1,49 @@
+<!--
+  Generated template for the ImageSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>VisSearch</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h2 text-center>Get ingredients with just one SNAP!</h2>
+    <div text-center>
+      <ion-buttons>
+        <button small ion-button icon-left color="danger" (click)="takeImage(1)">
+            <ion-icon name="camera"></ion-icon>
+            Take Picture
+        </button>
+        <button small ion-button icon-left color="danger" (click)="takeImage(0)">
+            <ion-icon name="images"></ion-icon>
+            Pick From Gallery
+        </button>
+      </ion-buttons>
+    </div>
+    <ion-card text-center *ngIf="imageURL != null">
+        <ion-card-content>
+            <img [src]="imageURL" style="height: 240px; width: auto;">
+            <p>Check out the ingredients we found below!</p>
+        </ion-card-content>
+    </ion-card>
+    <div *ngIf="ingredients.length != 0">
+      <h3>Identified Ingredients</h3>
+      <ion-list>
+          <ion-item *ngFor="let ingredient of ingredients">
+              <ion-label>{{ ingredient }}</ion-label>
+              <ion-checkbox (ionChange)="editList(ingredient, $event)"></ion-checkbox>
+          </ion-item>
+      </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <button ion-button color="orange" block round (click)="onClose()">Add Ingredients</button>
+</ion-footer>

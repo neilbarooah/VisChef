@@ -1,0 +1,32 @@
+<ion-content padding text-center>
+  <ion-item>
+      <ion-label>Select Cuisine(s)</ion-label>
+      <ion-select [(ngModel)]="selectedCuisines" multiple="true">
+          <ion-option>African</ion-option>
+          <ion-option>American</ion-option>
+          <ion-option>British</ion-option>
+          <ion-option>Cajun</ion-option>
+          <ion-option>Caribbean</ion-option>
+          <ion-option>Chinese</ion-option>
+          <ion-option>Eastern European</ion-option>
+          <ion-option>French</ion-option>
+          <ion-option>German</ion-option>
+          <ion-option>Greek</ion-option>
+          <ion-option>Indian</ion-option>
+          <ion-option>Irish</ion-option>
+          <ion-option>Italian</ion-option>
+          <ion-option>Japanese</ion-option>
+          <ion-option>Jewish</ion-option>
+          <ion-option>Korean</ion-option>
+          <ion-option>Latin American</ion-option>
+          <ion-option>Mexican</ion-option>
+          <ion-option>Middle Eastern</ion-option>
+          <ion-option>Nordic</ion-option>
+          <ion-option>Southern</ion-option>
+          <ion-option>Spanish</ion-option>
+          <ion-option>Thai</ion-option>
+          <ion-option>Vietnamese</ion-option>
+      </ion-select>
+  </ion-item>
+  <button ion-button full center color="orange" (tap)="enter()" text-center>Search</button>
+</ion-content>

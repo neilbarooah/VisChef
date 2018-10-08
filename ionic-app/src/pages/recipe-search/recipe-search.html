@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle start>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button right ion-button icon-only (click)="cameraSearch()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>VisChef</ion-title>
+    <br>
+  </ion-navbar>
+  <ion-toolbar>
+      <ion-buttons text-center>
+        <ion-searchbar [(ngModel)]="searchString" left></ion-searchbar>
+        <button left ion-button small center (click)="enterIngredient()" outline>Add Ingredient</button>
+
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <!--<ion-tabs>
+        <ion-tab [root]="imageSearch" tabTitle="VisSearch" tabIcon="camera"></ion-tab>
+        <ion-tab [root]="textSearch" tabTitle="Text Search" tabIcon="search"></ion-tab>
+  </ion-tabs>-->
+  <h4 text-center>What's in your kitchen today?</h4>
+  <h5 text-center>Select one item as a search key</h5>
+  <ion-list radio-group [(ngModel)]="searchKey">
+      <ion-item-sliding *ngFor="let ingredient of ingredients; let i = index">
+          <ion-item>
+              <ion-label>{{ ingredient }}</ion-label>
+              <ion-radio [value]="ingredient"></ion-radio>
+          </ion-item>
+          <ion-item-options>
+              <button
+                ion-button color="danger"
+                (click)="removeIngredient(i)">
+                  <ion-icon name="trash"></ion-icon>
+                  Delete
+              </button>
+          </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+<ion-footer text-right>
+    <button ion-button round block color="secondary" (click)="search()">Search</button>
+</ion-footer>

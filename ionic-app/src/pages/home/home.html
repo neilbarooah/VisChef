@@ -1,0 +1,26 @@
+<ion-header color="redBackground">
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      My Recipes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-center padding>
+  <img src="assets/imgs/logo_bowl.png">
+  <h1 text-center>All Recipes</h1>
+  <!--<img [src]="base64Image">-->
+  <ion-list>
+      <ion-item *ngFor="let recipe of recipes" text-wrap>
+          <ion-thumbnail item-start>
+              <img [src]="recipe['image']">
+          </ion-thumbnail>
+          <h3>{{ recipe['title'] }}</h3>
+      </ion-item>
+  </ion-list>
+</ion-content>
